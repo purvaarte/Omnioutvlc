@@ -60,4 +60,10 @@ module.exports = {
         symlinks: false,
         alias: alias,
     },
+   // resolve : {
+      //  fallback: { "querystring": require.resolve("querystring-es3") 
+
+      //  },
+    //},
+    
 };
