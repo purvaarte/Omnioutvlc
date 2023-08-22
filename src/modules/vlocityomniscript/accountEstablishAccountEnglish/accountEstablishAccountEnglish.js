@@ -1,15 +1,16 @@
+
 import { api, track } from 'lwc';
 import OmniscriptHeader from 'c/omniscriptHeader';
 import { isOffPlatform, setConnection, getConnection } from 'c/omniscriptRestApi';
 import { RUN_MODES, registerNs } from 'c/omniscriptInternalUtils';
-import { OMNIDEF } from './typeExampleSubtypeExampleEnglish_def.js';
-import tmpl from './typeExampleSubtypeExampleEnglish.html';
-import tmpl_nds from './typeExampleSubtypeExampleEnglish_nds.html';
+import { OMNIDEF } from './accountEstablishAccountEnglish_def.js';
+import tmpl from './accountEstablishAccountEnglish.html';
+import tmpl_nds from './accountEstablishAccountEnglish_nds.html';
 
 /**
  *  IMPORTANT! Generated class DO NOT MODIFY
  */
-export default class typeExampleSubtypeExampleEnglish extends OmniscriptHeader {
+export default class accountEstablishAccountEnglish extends OmniscriptHeader {
     @track jsonDef = {};
     @track resume = false;
     @api get inline() {
@@ -22,7 +23,21 @@ export default class typeExampleSubtypeExampleEnglish extends OmniscriptHeader {
     @api inlineLabel;
     @api inlineVariant;
     @api layout;
+    @api flexipageRegionWidth;
     @api recordId;
+    /**
+     * Exposing dir (direction) property in order to allow users to manually specify the direction
+     * of the text
+     */
+    @api get dir() {
+        return this._dir;
+    }
+    set dir(direction) {
+        if (direction) {
+            this._isRTL = direction === 'rtl';
+            this._dir = this._isRTL ? 'rtl' : 'ltr';
+        }
+    }
 
     @api set connection(value) {
         if (value) {
@@ -36,9 +51,7 @@ export default class typeExampleSubtypeExampleEnglish extends OmniscriptHeader {
     }
 
     connectedCallback() {
-
         this.checkResume();
-
         const connectionReceivedCallback = () => {
             this.jsonDef = this.instanceId ?
                 {
@@ -75,7 +88,7 @@ export default class typeExampleSubtypeExampleEnglish extends OmniscriptHeader {
             // Dispatch an event in order to notify we are ready to receive a connection
             this.dispatchEvent(new CustomEvent('omnioutcomponentready', { bubbles: true, composed: true, detail: { omnioutcomponent: true } }));
 
-            if (this.runMode === RUN_MODES.OFFLINE && !this.resume) {
+            if(this.runMode === RUN_MODES.OFFLINE && !this.resume) {
                 // When OFFLINE mode, continue with the connectedCallback and do not wait for the connection
                 connectionReceivedCallback();
             } else {
@@ -90,7 +103,6 @@ export default class typeExampleSubtypeExampleEnglish extends OmniscriptHeader {
     }
 
     waitForConnection(ms) {
-        // eslint-disable-next-line @lwc/lwc/no-async-operation
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 

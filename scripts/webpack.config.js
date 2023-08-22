@@ -56,14 +56,14 @@ module.exports = {
         historyApiFallback: true,
         port: 4002,
     },
-    resolve: {
-        symlinks: false,
-        alias: alias,
-    },
-   // resolve : {
-      //  fallback: { "querystring": require.resolve("querystring-es3") 
+   // resolve: {
+       // symlinks: false,
+       // alias: alias,
+   // },
+   resolve : {
+        fallback: { "querystring": require.resolve("querystring-es3") 
 
-      //  },
-    //},
+        },
+    },
     
 };
