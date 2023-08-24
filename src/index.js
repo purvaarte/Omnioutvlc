@@ -14,6 +14,10 @@ import '@lwc/synthetic-shadow';
 import VlocApp from 'vlocityomniscript/accountEstablishAccountEnglish';
 
 /**
+ * import the flexcard 
+ */
+import FlexCardProducts from 'flexcards/accountproducts';
+/**
  * If your OmniScript support multiple languages, you will need to include the language
  * locale for date support. For example:
  * 
@@ -57,6 +61,7 @@ if (isCompatibleBrowser) {
   if (!customElements.get('vlocityomniscript-account-establish-account-english')) {
     customElements.define('vlocityomniscript-account-establish-account-english', VlocApp.CustomElementConstructor);
 }
+customElements.define('flexcards-accountproducts', buildCustomElementConstructor(FlexCardProducts));
 }
 accountEstablishAccountEnglish
 function detectFeatures() {
